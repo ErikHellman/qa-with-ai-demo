@@ -1,11 +1,27 @@
 const { calculatePolygonArea } = require('./src/polygon');
 
-// Example usage
-const triangle = [[0, 0], [1, 0], [0, 1]];
-console.log(`Area of triangle: ${calculatePolygonArea(triangle)}`);
+// Get the polygon points from command line arguments
+const pointsString = process.argv[2];
 
-const square = [[0, 0], [1, 0], [1, 1], [0, 1]];
-console.log(`Area of square: ${calculatePolygonArea(square)}`);
+if (!pointsString) {
+    console.error('Please provide polygon points in the format: x1,y1;x2,y2;x3,y3;...');
+    process.exit(1);
+}
 
-const pentagon = [[0, 0], [2, 0], [2, 2], [1, 3], [0, 2]];
-console.log(`Area of pentagon: ${calculatePolygonArea(pentagon)}`);
+try {
+    // Parse the input string into an array of points
+    const points = pointsString.split(';').map(point => {
+        const [x, y] = point.split(',').map(Number);
+        if (isNaN(x) || isNaN(y)) {
+            throw new Error('Invalid point format');
+        }
+        return [x, y];
+    });
+
+    // Calculate and display the area
+    const area = calculatePolygonArea(points);
+    console.log(`Area of polygon: ${area}`);
+} catch (error) {
+    console.error('Error:', error.message);
+    process.exit(1);
+}
