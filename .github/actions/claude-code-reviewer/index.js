@@ -36677,17 +36677,16 @@ async function run() {
 
     console.log(`Code Review Response: ${response.content[0].text}`);
 
-    await octokit.request('POST /repos/{owner}/{repo}/pulls/{pull_number}/comments', {
+    await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
       owner: context.repo.owner,
       repo: context.repo.repo,
-      pull_number: prNumber,
-      commit_id: context.payload.pull_request.head.sha,
+      issue_number: prNumber,
       body: response.content[0].text,
       headers: {
         'X-GitHub-Api-Version': '2022-11-28'
       }
     });
-
+    
     core.info('Code review completed and posted as a comment.');
 
   } catch (error) {
