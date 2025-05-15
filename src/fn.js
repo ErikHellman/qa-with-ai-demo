@@ -1,4 +1,4 @@
-function fn(input) {
+function area(input) {
   if (!Array.isArray(input) || input.length < 3) {
     throw new Error('Bad input');
   }
@@ -22,4 +22,4 @@ function fn(input) {
   return Math.abs(m) / 2;
 }
 
-module.exports = { fn: fn };
+module.exports = { fn: area };
