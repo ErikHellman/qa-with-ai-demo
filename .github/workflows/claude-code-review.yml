@@ -8,9 +8,11 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
       - name: Claude Code Review
-        uses: actions/claude-code-review@v1
+        uses: ./.github/actions/claude-code-reviewer
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           claude-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
