@@ -36667,7 +36667,7 @@ async function run() {
     
     // Send to Claude for analysis
     const response = await anthropic.messages.create({
-      model: "claude-3-sonnet-20240229",
+      model: "claude-3-7-sonnet-20250219",
       max_tokens: 4000,
       system: "You are an expert code reviewer analyzing pull request changes. Be concise but thorough. Focus on substantive issues in the changed code rather than style nitpicks. Include specific code references with line numbers when possible. Format your response using GitHub-flavored markdown.",
       messages: [
@@ -36684,7 +36684,7 @@ async function run() {
 ${response.content[0].text}
 
 ---
-*This review was generated automatically by [Claude Code Reviewer](https://github.com/marketplace/actions/claude-code-reviewer)*
+*This review was generated automatically by [Claude Code Reviewer](https://github.com/ErikHellman/claude-code-reviewer)*
       `
     });
     
