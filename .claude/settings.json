@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run test:*)",      
+      "Write(src/__tests__/**)",
+      "Edit(src/__tests__/**)",
+      "Read"
+    ],
+    "deny": []
+  }
+}
